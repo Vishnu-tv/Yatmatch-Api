@@ -8,17 +8,19 @@ const users = [
     {
         id:1,
         name:"Sandhya",
-        email:"sandhya@gmail.com"
+        email:"sandhya@gmail.com",
+        subscribed:"no"
     },
     {
         id:2,
         name:"Vishnupriya",
-        email:"vishnu@gmail.com"
+        email:"tvvishnupriya96@gmail.com",
+        subscribed:"no"
     }
 ];
 
 
-const action = {
+const Createaction = {
     results: [],
     primaryAction: {
         type: "IFRAME",
@@ -28,18 +30,47 @@ const action = {
         label: "Create Broker Profile"
       }
   }
-      
+     
+  const Subscribeaction = {
+    results: [],
+    primaryAction: {
+        type: "IFRAME",
+        width: 890,
+        height: 748,
+        uri: "https://fe-yatmatch.demoserver.work/login",
+        label: "Subscibe a Plan"
+      }
+  }
+
+  const AddYachtaction = {
+    results: [],
+    primaryAction: {
+        type: "IFRAME",
+        width: 890,
+        height: 748,
+        uri: "https://fe-yatmatch.demoserver.work/login",
+        label: "Add Yacht"
+      }
+  }
+
 app.get('/dataFetchUrl',
  (req, res) => {
-    const email = req.query.email;
-    console.log('Email',email)
+    const email = req.query.userEmail;
     const exists = users.some(el => el.email === email);
     if(!exists)
     {
-        res.json(action);
+        res.json(Createaction);
     }
     else{
-        res.json('Not include');
+       const sub =  users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
+           if(sub == 'yes')
+           {
+            res.json(AddYachtaction);
+           }
+           else{
+            res.json(Subscribeaction);
+           }
+           
     }
 });
 

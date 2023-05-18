@@ -24,8 +24,8 @@ const action = {
         type: "IFRAME",
         width: 890,
         height: 748,
-        uri: "https://example.com/create-iframe-contents",
-        label: "Add to Yatmatch"
+        uri: "https://fe-yatmatch.demoserver.work/register",
+        label: "Create Broker Profile"
       }
   }
       

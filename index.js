@@ -44,7 +44,7 @@ app.get('/dataFetchUrl/:email', (req, res) => {
         res.json(action);
     }
     else{
-        res.send('Already exists');
+        res.json(action);
     }
 });~
 app.get('/', (req, res) => {

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.get('/:id', (req, res) => {
     const id = req.params.id;
     if (id == 1)

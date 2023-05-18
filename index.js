@@ -21,11 +21,8 @@ const users = [
 const action = {
     type: "ACTION_HOOK",
     httpMethod: "POST",
-    uri: "https://examplecompany.com/action-hook",
-    label: "Add to Yatmatch",
-    associatedObjectProperties: [
-      "demo1_crm_property"
-    ]
+    uri: "https://fe-yatmatch.demoserver.work/yatmatch",
+    label: "Add to Yatmatch"
   }
       
 app.get('/dataFetchUrl',
@@ -38,7 +35,7 @@ app.get('/dataFetchUrl',
         res.json(action);
     }
     else{
-        res.send('Not inclde');
+        res.json('Not include');
     }
 });
 

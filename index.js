@@ -41,12 +41,12 @@ app.get('/dataFetchUrl/:email', (req, res) => {
     const exists = users.some(el => el.email === email);
     if(!exists)
     {
-        res.send(action);
+        res.json(action);
     }
     else{
         res.send('Already exists');
     }
-});
+});~
 app.get('/', (req, res) => {
     res.send('Hello World, from express');
 });

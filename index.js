@@ -27,11 +27,11 @@ const users = [
 
 
 const action = {
-    "type": "ACTION_HOOK",
-    "httpMethod": "POST",
-    "uri": "https://examplecompany.com/action-hook",
-    "label": "Add to Yatmatch",
-    "associatedObjectProperties": [
+    type: "ACTION_HOOK",
+    httpMethod: "POST",
+    uri: "https://examplecompany.com/action-hook",
+    label: "Add to Yatmatch",
+    associatedObjectProperties: [
       "demo1_crm_property"
     ]
   }

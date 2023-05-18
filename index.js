@@ -19,10 +19,14 @@ const users = [
 
 
 const action = {
-    type: "ACTION_HOOK",
-    httpMethod: "POST",
-    uri: "https://fe-yatmatch.demoserver.work/yatmatch",
-    label: "Add to Yatmatch"
+    results: [],
+    primaryAction: {
+        type: "IFRAME",
+        width: 890,
+        height: 748,
+        uri: "https://example.com/create-iframe-contents",
+        label: "Add to Yatmatch"
+      }
   }
       
 app.get('/dataFetchUrl',

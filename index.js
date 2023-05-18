@@ -1,17 +1,9 @@
 const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
-app.get('/:id', (req, res) => {
-    const id = req.params.id;
-    if (id == 1)
-    {
-        res.send('Hello World, from ID express'+id);
-    }
-    else{
-        res.send("Not indlude");
-    }
-    
-});
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 const users = [
     {
         id:1,
@@ -36,17 +28,32 @@ const action = {
     ]
   }
       
-app.get('/dataFetchUrl/:email', (req, res) => {
-    const email = req.params.email;
+app.get('/dataFetchUrl',
+ (req, res) => {
+    const email = req.query.email;
+    console.log('Email',email)
     const exists = users.some(el => el.email === email);
     if(!exists)
     {
         res.json(action);
     }
     else{
-        res.json(action);
+        res.send('Not inclde');
     }
-});~
+});
+
+// app.get('/:id', (req, res) => {
+//     const id = req.params.id;
+//     if (id == 1)
+//     {
+//         res.send('Hello World, from ID express'+id);
+//     }
+//     else{
+//         res.send("Not include");
+//     }
+    
+// });
+
 app.get('/', (req, res) => {
     res.send('Hello World, from express');
 });

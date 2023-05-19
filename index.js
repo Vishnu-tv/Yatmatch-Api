@@ -85,7 +85,7 @@ const addContactFormAction = {
 }
 const alertButton = {
   results: [{
-    actions: [{
+    primaryAction: [{
       type: "alert",
       title: "This is an alert component. Use it to communicate important or timely info.",
       body: {

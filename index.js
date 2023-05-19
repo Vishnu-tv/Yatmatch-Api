@@ -111,7 +111,7 @@ app.get('/dataFetchUrl',
        const sub =  users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
            if(sub == 'yes')
            {
-            res.json(addContactAction);
+            res.json(alertButton);
            }
            else{
             res.json(subscribeAction);

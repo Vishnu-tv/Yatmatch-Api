@@ -86,12 +86,11 @@ const addContactFormAction = {
 const alertButton = {
   results: [],
   primaryAction: {
-    type: "alert",
-    title: "This is an alert component. Use it to communicate important or timely info.",
-    body: {
-      type: "text",
-      text: "Use the variant property to change the color and purpose of the alert. Options are 'info', 'success', 'warning', and 'error'."
-    }
+    type: "IFRAME",
+    width: 890,
+    height: 748,
+    uri: "https://yatmatch-api.up.railway.app/addContact",
+    label: "Add Yacht"
   }
 
 

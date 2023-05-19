@@ -87,8 +87,9 @@ const createProfileAction = {
 app.get('/dataFetchUrl',
  (req, res) => {
     const email = req.query.userEmail;
+    const userMail = req.query.userEmail
     const name = req.query.firstname + ' '+ req.query.lastname;
-    contactEmail = email;
+    contactEmail = userMail;
     contactName = name;
     const exists = users.some(el => el.email === email);
     console.log('exists',exists)
@@ -115,8 +116,10 @@ app.get('/addContact', (req, res) => {
         if (err) {
           return console.log(err);
         }
-        console.log("$_NAME",contactName)
+        
+        data = data.replace("$_NAME", contactName);
         data = data.replace("$_EMAIL", contactEmail);
+        console.log("INdex Page",data)
         res.send(data);
       });
     

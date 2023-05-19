@@ -5,7 +5,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
 app.use(bodyParser.json());
-var contactEmail = ';'
+var contactEmail = '';
+var contactName = '';
 const users = [
     {
         id:1,
@@ -85,8 +86,10 @@ const createProfileAction = {
 
 app.get('/dataFetchUrl',
  (req, res) => {
-    const email = req.query.userEmail;
+    const email = req.query.email;
+    const name = req.query.firstname + ' '+ req.query.lastname;
     contactEmail = email;
+    contactName = name;
     const exists = users.some(el => el.email === email);
     if(!exists)
     {
@@ -111,9 +114,8 @@ app.get('/addContact', (req, res) => {
         if (err) {
           return console.log(err);
         }
-        console.log('Data before Replace',data)
+        console.log('name',contactName)
         data = data.replace("$_EMAIL", contactEmail);
-        console.log('Data after Replace',data)
         res.send(data);
       });
     

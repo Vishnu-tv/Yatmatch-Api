@@ -14,7 +14,7 @@ const users = [
     {
         id:2,
         name:"Vishnupriya",
-        email:"tvvishnupriya96@gmail.com",
+        email:"tvvishnupriya@gmail.com",
         subscribed:"no"
     }
 ];
@@ -30,7 +30,18 @@ const Createaction = {
         label: "Create Broker Profile"
       }
   }
-     
+    
+  const create_alt = [
+    {
+      type: "button",
+      text: "Click to trigger an action",
+      href: "https://hubspot.com",
+      onClick: {
+        type: "SERVERLESS_ACTION_HOOK",
+        serverlessFunction: "exampleFunction"
+      }
+    }
+  ]
   const Subscribeaction = {
     results: [],
     primaryAction: {
@@ -59,7 +70,7 @@ app.get('/dataFetchUrl',
     const exists = users.some(el => el.email === email);
     if(!exists)
     {
-        res.json(Createaction);
+        res.json(create_alt);
     }
     else{
        const sub =  users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);

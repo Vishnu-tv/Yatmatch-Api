@@ -48,7 +48,7 @@ const createProfileAction = {
         type: "IFRAME",
         width: 890,
         height: 748,
-        uri: "/addContact",
+        uri: "https://yatmatch-api.up.railway.app/addContact",
         label: "Add Yacht"
       }
   }

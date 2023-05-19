@@ -41,18 +41,18 @@ const createProfileAction = {
       }
   }
 
-  const addYachtAction = {
+  const addContactAction = {
     primaryAction: {
         type: "IFRAME",
         width: 890,
         height: 748,
-        uri: "https://fe-yatmatch.demoserver.work/login",
+        uri: "/addContact",
         label: "Add Yacht"
       }
   }
 
   const addContactFormAction = {
-    secondaryActions:{
+    primaryAction:{
           type: "form",
           content: [
             {
@@ -93,7 +93,7 @@ app.get('/dataFetchUrl',
        const sub =  users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
            if(sub == 'yes')
            {
-            res.json(addContactFormAction);
+            res.json(addContactAction);
            }
            else{
             res.json(subscribeAction);
@@ -102,17 +102,9 @@ app.get('/dataFetchUrl',
     }
 });
 
-// app.get('/:id', (req, res) => {
-//     const id = req.params.id;
-//     if (id == 1)
-//     {
-//         res.send('Hello World, from ID express'+id);
-//     }
-//     else{
-//         res.send("Not include");
-//     }
-    
-// });
+app.get('/addContact', (req, res) => {
+    res.json(addContactFormAction);
+});
 
 app.get('/', (req, res) => {
     res.send('Hello World, from express');

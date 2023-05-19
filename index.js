@@ -110,7 +110,8 @@ app.get('/addContact', (req, res) => {
         if (err) {
           return console.log(err);
         }
-
+        const email = req.query.email;
+        data = data.replace(/\$__EMAIL/g, email);
         res.send(data);
       });
     

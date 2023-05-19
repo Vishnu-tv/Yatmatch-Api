@@ -124,7 +124,8 @@ app.get('/addContact', (req, res) => {
     
 });
 app.get('/addCon', (req, res) => {
-  res.json(subscribeAction);
+  window.parent.postMessage(JSON.stringify({"action": "DONE"}), "*");
+  // res.json(subscribeAction);
 });
 
 app.get('/', (req, res) => {

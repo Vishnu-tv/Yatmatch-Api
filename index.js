@@ -100,7 +100,8 @@ app.get('/addContact', (req, res) => {
 
 app.get('/addCon', (req, res) => {
   // res.json(alertButton)
-  window.opener.postMessage("Add Success", "*");
+  // window.opener.postMessage("Add Success", "*");
+  window.parent.postMessage(JSON.stringify({"action": "DONE"}), "*");
   // JSON.stringify({"action": "DONE"})
 });
 

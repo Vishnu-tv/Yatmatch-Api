@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const path = require('path');
+const fs = require('fs');
 app.use(bodyParser.json());
 
 const users = [
@@ -46,7 +48,7 @@ const createProfileAction = {
         type: "IFRAME",
         width: 890,
         height: 748,
-        uri: "https://yatmatch-api.up.railway.app/addContact",
+        uri: "/addContact",
         label: "Add Yacht"
       }
   }
@@ -103,7 +105,15 @@ app.get('/dataFetchUrl',
 });
 
 app.get('/addContact', (req, res) => {
-    res.json(addContactFormAction);
+    const filePath = path.resolve(__dirname, './public', 'phone.html')
+    fs.readFile(filePath, 'utf8', function (err, data) {
+        if (err) {
+          return console.log(err);
+        }
+
+        res.send(data);
+      });
+    
 });
 
 app.get('/', (req, res) => {

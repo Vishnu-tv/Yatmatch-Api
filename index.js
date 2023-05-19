@@ -111,7 +111,9 @@ app.get('/addContact', (req, res) => {
         if (err) {
           return console.log(err);
         }
-        data = data.replace(/\$__EMAIL/g, contactEmail);
+        console.log('Data before Replace',data)
+        data = data.replace("$_EMAIL", contactEmail);
+        console.log('Data after Replace',data)
         res.send(data);
       });
     

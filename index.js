@@ -52,7 +52,7 @@ const createProfileAction = {
   }
 
   const addContactFormAction = {
-    
+    secondaryActions:{
           type: "form",
           content: [
             {
@@ -78,7 +78,7 @@ const createProfileAction = {
               }
             }
           ]
-       
+    }
   }
 
 app.get('/dataFetchUrl',

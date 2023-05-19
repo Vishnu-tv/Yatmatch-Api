@@ -83,7 +83,18 @@ const createProfileAction = {
           ]
     }
   }
-
+const alertButton ={
+  
+    actions : {
+      type: "alert",
+      title: "This is an alert component. Use it to communicate important or timely info.",
+      body: {
+        type: "text",
+        text: "Use the variant property to change the color and purpose of the alert. Options are 'info', 'success', 'warning', and 'error'."
+      }
+    }
+  
+}
 app.get('/dataFetchUrl',
  (req, res) => {
     const email = req.query.userEmail;
@@ -124,8 +135,8 @@ app.get('/addContact', (req, res) => {
     
 });
 app.get('/addCon', (req, res) => {
-  // res.json(addContactAction)
-  window.parent.postMessage(JSON.stringify({action: "DONE"}), "*");
+  res.json(alertButton)
+  // window.parent.postMessage(JSON.stringify({action: "DONE"}), "*");
 });
 
 app.get('/', (req, res) => {

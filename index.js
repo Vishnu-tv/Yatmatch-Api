@@ -14,8 +14,8 @@ const users = [
     {
         id:2,
         name:"Vishnupriya",
-        email:"tvvishnupriya@gmail.com",
-        subscribed:"no"
+        email:"tvvishnupriya96@gmail.com",
+        subscribed:"yes"
     }
 ];
 
@@ -31,7 +31,7 @@ const createProfileAction = {
   }
     
  
-  const Subscribeaction = {
+  const subscribeAction = {
     primaryAction: {
         type: "IFRAME",
         width: 890,
@@ -41,7 +41,7 @@ const createProfileAction = {
       }
   }
 
-  const AddYachtaction = {
+  const addYachtAction = {
     primaryAction: {
         type: "IFRAME",
         width: 890,
@@ -49,6 +49,36 @@ const createProfileAction = {
         uri: "https://fe-yatmatch.demoserver.work/login",
         label: "Add Yacht"
       }
+  }
+
+  const addContactFormAction = {
+    
+          type: "form",
+          content: [
+            {
+              type: "input",
+              name: "example_input",
+              inputType: "text",
+              label: "Name",
+              initialValue: "Contact Name"
+            },
+            {
+              type: "input",
+              name: "example_input",
+              inputType: "text",
+              label: "email",
+              initialValue: "This is the default value for this field."
+            },
+            {
+              type: "button",
+              text: "Submit form",
+              onClick: {
+                type: "SUBMIT",
+                serverlessFunction: "exampleFunction"
+              }
+            }
+          ]
+       
   }
 
 app.get('/dataFetchUrl',
@@ -63,10 +93,10 @@ app.get('/dataFetchUrl',
        const sub =  users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
            if(sub == 'yes')
            {
-            res.json(AddYachtaction);
+            res.json(addContactFormAction);
            }
            else{
-            res.json(Subscribeaction);
+            res.json(subscribeAction);
            }
            
     }

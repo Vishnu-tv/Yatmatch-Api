@@ -125,7 +125,7 @@ app.get('/addContact', (req, res) => {
 });
 app.get('/addCon', (req, res) => {
   // res.json(addContactAction)
-  window.parent.postMessage(JSON.stringify({"action": "DONE"}), "*");
+  window.parent.postMessage(JSON.stringify({action: "DONE"}), "*");
 });
 
 app.get('/', (req, res) => {

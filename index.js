@@ -83,6 +83,117 @@ const subscribeAction = {
   }
 }
 
+const form = {
+  "name": "DemoForm",
+  "action": "",
+  "method": "",
+  "cssClass": "",
+  "redirect": "",
+  "submitText": "Submit",
+  "followUpId": "",
+  "notifyRecipients": "",
+  "leadNurturingCampaignId": "",
+  "formFieldGroups": [
+      {
+          "fields": [
+              {
+                  "name": "firstname",
+                  "label": "First Name",
+                  "type": "string",
+                  "fieldType": "text",
+                  "description": "",
+                  "groupName": "",
+                  "displayOrder": 0,
+                  "required": false,
+                  "selectedOptions": [],
+                  "options": [],
+                  "validation": {
+                      "name": "",
+                      "message": "",
+                      "data": "",
+                      "useDefaultBlockList": false
+                  },
+                  "enabled": true,
+                  "hidden": false,
+                  "defaultValue": "",
+                  "isSmartField": false,
+                  "unselectedLabel": "",
+                  "placeholder": ""
+              }
+          ],
+          "default": true,
+          "isSmartGroup": false
+      },
+      {
+          "fields": [
+              {
+                  "name": "lastname",
+                  "label": "Last Name",
+                  "type": "string",
+                  "fieldType": "text",
+                  "description": "",
+                  "groupName": "",
+                  "displayOrder": 1,
+                  "required": false,
+                  "selectedOptions": [],
+                  "options": [],
+                  "validation": {
+                      "name": "",
+                      "message": "",
+                      "data": "",
+                      "useDefaultBlockList": false
+                  },
+                  "enabled": true,
+                  "hidden": false,
+                  "defaultValue": "",
+                  "isSmartField": false,
+                  "unselectedLabel": "",
+                  "placeholder": ""
+              }
+          ],
+          "default": true,
+          "isSmartGroup": false
+      },
+      {
+          "fields": [
+              {
+                  "name": "adress_1",
+                  "label": "Adress 1",
+                  "type": "string",
+                  "fieldType": "text",
+                  "description": "",
+                  "groupName": "",
+                  "displayOrder": 2,
+                  "required": false,
+                  "selectedOptions": [],
+                  "options": [],
+                  "validation": {
+                      "name": "",
+                      "message": "",
+                      "data": "",
+                      "useDefaultBlockList": false
+                  },
+                  "enabled": true,
+                  "hidden": false,
+                  "defaultValue": "",
+                  "isSmartField": false,
+                  "unselectedLabel": "",
+                  "placeholder": ""
+              }
+          ],
+          "default": true,
+          "isSmartGroup": false
+      }
+  ],
+  "createdAt": 1318534279910,
+  "updatedAt": 1413919291011,
+  "performableHtml": "",
+  "migratedFrom": "ld",
+  "ignoreCurrentValues": false,
+  "metaData": [],
+  "deletable": true
+}
+
 const addContactAction = {
   primaryAction: {
     type: "IFRAME",
@@ -155,7 +266,7 @@ app.get('/dataFetchUrl',
     else {
       const sub = users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
       if (sub == 'yes') {
-        res.json(alertButton);
+        res.json(addContactAction);
       }
       else {
         res.json(subscribeAction);
@@ -165,19 +276,22 @@ app.get('/dataFetchUrl',
   });
 
 app.get('/addContact', (req, res) => {
-  const filePath = path.resolve(__dirname, './public', 'phone.html')
-  fs.readFile(filePath, 'utf8', function (err, data) {
-    if (err) {
-      return console.log(err);
-    }
+  // const filePath = path.resolve(__dirname, './public', 'phone.html')
+  // fs.readFile(filePath, 'utf8', function (err, data) {
+  //   if (err) {
+  //     return console.log(err);
+  //   }
 
-    data = data.replace("$_NAME", contactName);
-    data = data.replace("$_EMAIL", contactEmail);
-    console.log('Email', contactEmail)
-    res.send(data);
-  });
-
+  //   data = data.replace("$_NAME", contactName);
+  //   data = data.replace("$_EMAIL", contactEmail);
+  //   console.log('Email', contactEmail)
+  //   res.send(data);
+  // });
+  res.json(form);
 });
+
+
+
 app.get('/addCon', (req, res) => {
   // res.json(alertButton)
   window.parent.postMessage(JSON.stringify({"action": "DONE"}), "*");

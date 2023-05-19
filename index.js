@@ -86,11 +86,12 @@ const createProfileAction = {
 
 app.get('/dataFetchUrl',
  (req, res) => {
-    const email = req.query.email;
+    const email = req.query.userEmail;
     const name = req.query.firstname + ' '+ req.query.lastname;
     contactEmail = email;
     contactName = name;
     const exists = users.some(el => el.email === email);
+    console.log('exists',exists)
     if(!exists)
     {
         res.json(createProfileAction);

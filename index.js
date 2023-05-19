@@ -115,7 +115,7 @@ app.get('/addContact', (req, res) => {
         if (err) {
           return console.log(err);
         }
-        console.log('name',contactName)
+        console.log("$_NAME",contactName)
         data = data.replace("$_EMAIL", contactEmail);
         res.send(data);
       });

@@ -92,7 +92,6 @@ app.get('/dataFetchUrl',
     contactEmail = userMail;
     contactName = name;
     const exists = users.some(el => el.email === email);
-    console.log('exists',exists)
     if(!exists)
     {
         res.json(createProfileAction);
@@ -125,7 +124,7 @@ app.get('/addContact', (req, res) => {
     
 });
 app.get('/addCon', (req, res) => {
-  res.json('added successfully')
+  res.json(addContactAction)
   // res.json(subscribeAction);
 });
 

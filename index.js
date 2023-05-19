@@ -17,7 +17,7 @@ const users = [
   {
     id: 2,
     name: "Vishnupriya",
-    email: "tvvishnupriya9@gmail.com",
+    email: "tvvishnupriya96@gmail.com",
     subscribed: "yes"
   }
 ];
@@ -34,7 +34,7 @@ const createProfileAction = {
 }
 
 const create_1 = {
-  "results": [
+  results: [
     {
       objectId: 245,
       title: "Profile In Yatmatch",
@@ -123,16 +123,22 @@ const addContactFormAction = {
   }
 }
 const alertButton = {
-  results: [],
-  actions : {
-    type: "alert",
-    title: "This is an alert component. Use it to communicate important or timely info.",
-    body: {
+  sections: [
+    {
       type: "text",
-      text: "Use the variant property to change the color and purpose of the alert. Options are 'info', 'success', 'warning', and 'error'."
+      text: "Click the button below to retrieve data."
+    },
+    {
+      type: "button",
+      text: "Primary button",
+      tooltip: "Hover text.",
+      variant:"primary",
+      // onClick: {
+      //   "type": "SERVERLESS_ACTION_HOOK",
+      //   "serverlessFunction": "crm-card"
+      // }
     }
-  }
-
+  ]
 
 }
 app.get('/dataFetchUrl',
@@ -144,7 +150,7 @@ app.get('/dataFetchUrl',
     contactName = name;
     const exists = users.some(el => el.email === email);
     if (!exists) {
-      res.json(create_1);
+      res.json(createProfileAction);
     }
     else {
       const sub = users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
@@ -173,8 +179,8 @@ app.get('/addContact', (req, res) => {
 
 });
 app.get('/addCon', (req, res) => {
-  res.json(alertButton)
-  // window.parent.postMessage(JSON.stringify({action: "DONE"}), "*");
+  // res.json(alertButton)
+  window.parent.postMessage(JSON.stringify({"action": "DONE"}), "*");
 });
 
 app.get('/', (req, res) => {

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
 app.use(bodyParser.json());
-
+var contactEmail = ';'
 const users = [
     {
         id:1,
@@ -86,6 +86,7 @@ const createProfileAction = {
 app.get('/dataFetchUrl',
  (req, res) => {
     const email = req.query.userEmail;
+    contactEmail = email;
     const exists = users.some(el => el.email === email);
     if(!exists)
     {
@@ -111,7 +112,7 @@ app.get('/addContact', (req, res) => {
           return console.log(err);
         }
         const email = req.query.email;
-        console.log('email',email)
+        console.log('email Global',contactEmail)
         data = data.replace(/\$__EMAIL/g, email);
         res.send(data);
       });

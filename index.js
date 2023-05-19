@@ -20,8 +20,8 @@ const users = [
 ];
 
 
-const Createaction = {
-    results: [],
+const createProfileAction = {
+    // results: [],
     primaryAction: {
         type: "IFRAME",
         width: 890,
@@ -31,17 +31,7 @@ const Createaction = {
       }
   }
     
-  const create_alt = [
-    {
-      type: "button",
-      text: "Click to trigger an action",
-      href: "https://hubspot.com",
-      onClick: {
-        type: "SERVERLESS_ACTION_HOOK",
-        serverlessFunction: "exampleFunction"
-      }
-    }
-  ]
+ 
   const Subscribeaction = {
     results: [],
     primaryAction: {
@@ -70,7 +60,7 @@ app.get('/dataFetchUrl',
     const exists = users.some(el => el.email === email);
     if(!exists)
     {
-        res.json(create_alt);
+        res.json(createProfileAction);
     }
     else{
        const sub =  users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);

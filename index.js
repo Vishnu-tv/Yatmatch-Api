@@ -87,7 +87,7 @@ const createProfileAction = {
 app.get('/dataFetchUrl',
  (req, res) => {
     const email = req.query.userEmail;
-    const userMail = req.query.userEmail
+    const userMail = req.query.mail
     const name = req.query.firstname + ' '+ req.query.lastname;
     contactEmail = userMail;
     contactName = name;
@@ -119,10 +119,12 @@ app.get('/addContact', (req, res) => {
         
         data = data.replace("$_NAME", contactName);
         data = data.replace("$_EMAIL", contactEmail);
-        console.log("INdex Page",data)
         res.send(data);
       });
     
+});
+app.get('/addCon', (req, res) => {
+  res.json(subscribeAction);
 });
 
 app.get('/', (req, res) => {

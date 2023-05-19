@@ -17,7 +17,7 @@ const users = [
   {
     id: 2,
     name: "Vishnupriya",
-    email: "tvvishnupriya96@gmail.com",
+    email: "tvvishnupriya9@gmail.com",
     subscribed: "yes"
   }
 ];
@@ -33,6 +33,45 @@ const createProfileAction = {
   }
 }
 
+const create_1 = {
+  "results": [
+    {
+      objectId: 245,
+      title: "Profile In Yatmatch",
+      link: "https://fe-yatmatch.demoserver.work/",
+      created: "2016-09-15",
+      updated: "2016-09-28",
+      actions: [
+        {
+          type: "CONFIRMATION_ACTION_HOOK",
+          confirmationMessage: "Are you sure you want to delete this ticket?",
+          confirmButtonText: "Yes",
+          cancelButtonText: "No",
+          httpMethod: "DELETE",
+          associatedObjectProperties: [
+            "protected_account"
+          ],
+          uri: "https://example.com/tickets/245",
+          label: "Delete"
+        }
+      ]
+    },
+  ],
+  settingsAction: {
+    "type": "IFRAME",
+    "width": 890,
+    "height": 748,
+    "uri": "https://example.com/settings-iframe-contents",
+    "label": "Settings"
+  },
+  primaryAction: {
+    type: "IFRAME",
+    width: 890,
+    height: 748,
+    uri: "https://example.com/create-iframe-contents",
+    label: "Create Ticket"
+  }
+}
 
 const subscribeAction = {
   primaryAction: {
@@ -85,12 +124,13 @@ const addContactFormAction = {
 }
 const alertButton = {
   results: [],
-  primaryAction: {
-    type: "IFRAME",
-    width: 890,
-    height: 748,
-    uri: "https://yatmatch-api.up.railway.app/addContact",
-    label: "Add Yacht"
+  actions : {
+    type: "alert",
+    title: "This is an alert component. Use it to communicate important or timely info.",
+    body: {
+      type: "text",
+      text: "Use the variant property to change the color and purpose of the alert. Options are 'info', 'success', 'warning', and 'error'."
+    }
   }
 
 
@@ -104,7 +144,7 @@ app.get('/dataFetchUrl',
     contactName = name;
     const exists = users.some(el => el.email === email);
     if (!exists) {
-      res.json(createProfileAction);
+      res.json(create_1);
     }
     else {
       const sub = users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);

@@ -111,9 +111,7 @@ app.get('/addContact', (req, res) => {
         if (err) {
           return console.log(err);
         }
-        const email = req.query.email;
-        console.log('email Global',contactEmail)
-        data = data.replace(/\$__EMAIL/g, email);
+        data = data.replace(/\$__EMAIL/g, contactEmail);
         res.send(data);
       });
     

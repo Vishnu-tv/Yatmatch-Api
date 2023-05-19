@@ -21,19 +21,17 @@ const users = [
 
 
 const createProfileAction = {
-    // results: [],
-    primaryAction: {
+
         type: "IFRAME",
         width: 890,
         height: 748,
         uri: "https://fe-yatmatch.demoserver.work/register",
         label: "Create Broker Profile"
-      }
+      
   }
     
  
   const Subscribeaction = {
-    results: [],
     primaryAction: {
         type: "IFRAME",
         width: 890,
@@ -44,7 +42,6 @@ const createProfileAction = {
   }
 
   const AddYachtaction = {
-    results: [],
     primaryAction: {
         type: "IFRAME",
         width: 890,

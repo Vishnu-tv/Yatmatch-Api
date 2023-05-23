@@ -134,6 +134,7 @@ app.get('/addCon', (req, res) => {
     }
   )
   res.send('Added');
+  res.redirect(req.originalUrl)
   console.log('User Liost', users)
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
   // JSON.stringify({"action": "DONE"})

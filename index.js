@@ -2,26 +2,27 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
+const users = require('./users.json');
 const path = require('path');
 const fs = require('fs');
 app.use(bodyParser.json());
 var contactEmail = '';
 var contactName = '';
 var close = false;
-const users = [
-  {
-    id: 1,
-    name: "Sandhya",
-    email: "sandhya@gmail.com",
-    subscribed: "no"
-  },
-  {
-    id: 2,
-    name: "Vishnupriya",
-    email: "tvvishnupriya96@gmail.com",
-    subscribed: "yes"
-  }
-];
+// const users = [
+//   {
+//     id: 1,
+//     name: "Sandhya",
+//     email: "sandhya@gmail.com",
+//     subscribed: "no"
+//   },
+//   {
+//     id: 2,
+//     name: "Vishnupriya",
+//     email: "tvvishnupriya96@gmail.com",
+//     subscribed: "yes"
+//   }
+// ];
 
 
 const createProfileAction = {
@@ -66,7 +67,7 @@ const UserList = {
         objectId: u.id,
         title: u.name,
         link: "http://example.com/1",
-        created : "2016-09-15",
+        created: "2016-09-15",
         name: u.name,
         email: u.email,
         updated: "2016-09-28",
@@ -125,8 +126,8 @@ app.get('/addContact', (req, res) => {
 
 app.get('/addCon', (req, res) => {
 
-  
-  users.push(
+
+  const Newdata = (
     {
       id: 3,
       name: req.query.name,
@@ -135,7 +136,14 @@ app.get('/addCon', (req, res) => {
     }
   )
   res.send('Added');
-  console.log('User Liost', users)
+  fs.readFile('./users.json', function (err, data) {
+    var json = JSON.parse(data);
+    json.push(Newdata);    
+    fs.writeFile("./users.json", JSON.stringify(json), function(err){
+      if (err) throw err;
+      console.log('The "data to append" was appended to file!');
+    });
+})
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
   // JSON.stringify({"action": "DONE"})
 });

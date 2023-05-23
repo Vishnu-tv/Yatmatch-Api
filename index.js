@@ -2,13 +2,15 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
-const users = require('./users.json');
+var users = require('./users');
 const path = require('path');
+app.use(express.json());
 const fs = require('fs');
 app.use(bodyParser.json());
 var contactEmail = '';
 var contactName = '';
 var close = false;
+var UserList;
 // const users = [
 //   {
 //     id: 1,
@@ -59,29 +61,7 @@ const addContactAction = {
   }
 }
 
-const UserList = {
 
-  results:
-    users.map((u) => {
-      return {
-        objectId: u.id,
-        title: u.name,
-        link: "http://example.com/1",
-        created: "2016-09-15",
-        name: u.name,
-        email: u.email,
-        updated: "2016-09-28",
-      }
-    }),
-  primaryAction: {
-    type: "IFRAME",
-    width: 890,
-    height: 748,
-    uri: "https://yatmatch-api.up.railway.app/addContact",
-    label: "Add Yacht"
-  }
-
-}
 
 app.get('/dataFetchUrl',
   (req, res) => {
@@ -90,14 +70,42 @@ app.get('/dataFetchUrl',
     const name = req.query.firstname + ' ' + req.query.lastname;
     contactEmail = userMail;
     contactName = name;
+    var result;
     const exists = users.some(el => el.email === email);
+    result = fs.readFileSync('./users.json', 'utf8', function (err, data) {
+      if (err) throw err;
+      return data
+    });
+
+
+    fullList = {
+      results:
+        JSON.parse(result).map((u) => {
+          return {
+            objectId: u.id,
+            title: u.name,
+            link: "http://example.com/1",
+            created: "2016-09-15",
+            name: u.name,
+            email: u.email,
+            updated: "2016-09-28",
+          }
+        }),
+      primaryAction: {
+        type: "IFRAME",
+        width: 890,
+        height: 748,
+        uri: "https://yatmatch-api.up.railway.app/addContact",
+        label: "Add Yacht"
+      }
+    }
     if (!exists) {
       res.json(createProfileAction);
     }
     else {
       const sub = users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
       if (sub == 'yes') {
-        res.json(UserList);
+        res.send(fullList);
       }
       else {
         res.json(subscribeAction);
@@ -125,8 +133,6 @@ app.get('/addContact', (req, res) => {
 
 
 app.get('/addCon', (req, res) => {
-
-
   const Newdata = (
     {
       id: 3,
@@ -138,19 +144,44 @@ app.get('/addCon', (req, res) => {
   res.send('Added');
   fs.readFile('./users.json', function (err, data) {
     var json = JSON.parse(data);
-    json.push(Newdata);    
-    fs.writeFile("./users.json", JSON.stringify(json), function(err){
+    json.push(Newdata);
+    fs.writeFile("./users.json", JSON.stringify(json), function (err) {
       if (err) throw err;
-      console.log('The "data to append" was appended to file!');
+      // console.log('The "data to append" was appended to file!');
     });
-})
+  })
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
-  // JSON.stringify({"action": "DONE"})
 });
 
 app.get('/list', (req, res) => {
-  console.log('List', UserList)
-  res.send(UserList);
+  fs.readFile('./users.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    data = JSON.parse(data);
+    const UserList = {
+
+      results:
+        data.map((u) => {
+          return {
+            objectId: u.id,
+            title: u.name,
+            link: "http://example.com/1",
+            created: "2016-09-15",
+            name: u.name,
+            email: u.email,
+            updated: "2016-09-28",
+          }
+        }),
+      primaryAction: {
+        type: "IFRAME",
+        width: 890,
+        height: 748,
+        uri: "https://yatmatch-api.up.railway.app/addContact",
+        label: "Add Yacht"
+      }
+
+    }
+    res.send(UserList);
+  });
 });
 
 app.get('/', (req, res) => {

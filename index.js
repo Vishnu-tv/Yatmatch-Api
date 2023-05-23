@@ -7,6 +7,7 @@ const fs = require('fs');
 app.use(bodyParser.json());
 var contactEmail = '';
 var contactName = '';
+var close = false;
 const users = [
   {
     id: 1,
@@ -124,7 +125,7 @@ app.get('/addContact', (req, res) => {
 
 app.get('/addCon', (req, res) => {
 
-
+  
   users.push(
     {
       id: 3,
@@ -134,7 +135,6 @@ app.get('/addCon', (req, res) => {
     }
   )
   res.send('Added');
-  res.redirect(req.originalUrl)
   console.log('User Liost', users)
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
   // JSON.stringify({"action": "DONE"})

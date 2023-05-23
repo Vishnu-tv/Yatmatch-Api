@@ -57,6 +57,21 @@ const addContactAction = {
   }
 }
 
+const UserList = {
+
+  results:
+    users.map((u) => {
+      return {
+        objectId: u.id,
+        username: u.name,
+        email: u.email,
+        updated: "2016-09-28",
+      }
+    })
+  ,
+  primaryAction: addContactAction
+
+}
 
 app.get('/dataFetchUrl',
   (req, res) => {
@@ -72,13 +87,14 @@ app.get('/dataFetchUrl',
     else {
       const sub = users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
       if (sub == 'yes') {
-        res.json(addContactAction);
+        res.json(UserList);
       }
       else {
         res.json(subscribeAction);
       }
 
     }
+   
   });
 
 app.get('/addContact', (req, res) => {
@@ -99,8 +115,8 @@ app.get('/addContact', (req, res) => {
 
 
 app.get('/addCon', (req, res) => {
-  
- 
+
+
   users.push(
     {
       id: 3,
@@ -110,12 +126,18 @@ app.get('/addCon', (req, res) => {
     }
   )
   res.send('Added');
-  console.log('User Liost',users)
+  console.log('User Liost', users)
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
   // JSON.stringify({"action": "DONE"})
 });
 
+app.get('/list', (req, res) => {
+  console.log('List',UserList)
+  res.send(UserList);
+});
+
 app.get('/', (req, res) => {
+  
   res.send('Hello World, from express');
 });
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))

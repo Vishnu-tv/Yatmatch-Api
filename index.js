@@ -99,9 +99,19 @@ app.get('/addContact', (req, res) => {
 
 
 app.get('/addCon', (req, res) => {
-  // res.json(alertButton)
-  // window.opener.postMessage("Add Success", "*");
-  window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
+  
+ 
+  users.push(
+    {
+      id: 3,
+      name: req.query.name,
+      email: req.query.email,
+      subscribed: "no"
+    }
+  )
+  res.send('Added');
+  console.log('User Liost',users)
+  // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
   // JSON.stringify({"action": "DONE"})
 });
 

@@ -70,9 +70,14 @@ const UserList = {
         email: u.email,
         updated: "2016-09-28",
       }
-    })
-  ,
-  primaryAction: addContactAction
+    }),
+  primaryAction: {
+    type: "IFRAME",
+    width: 890,
+    height: 748,
+    uri: "https://yatmatch-api.up.railway.app/addContact",
+    label: "Add Yacht"
+  }
 
 }
 

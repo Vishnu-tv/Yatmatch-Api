@@ -63,6 +63,9 @@ const UserList = {
     users.map((u) => {
       return {
         objectId: u.id,
+        title: u.name,
+        link: "http://example.com/1",
+        created : "2016-09-15",
         name: u.name,
         email: u.email,
         updated: "2016-09-28",
@@ -94,7 +97,7 @@ app.get('/dataFetchUrl',
       }
 
     }
-   
+
   });
 
 app.get('/addContact', (req, res) => {
@@ -132,12 +135,12 @@ app.get('/addCon', (req, res) => {
 });
 
 app.get('/list', (req, res) => {
-  console.log('List',UserList)
+  console.log('List', UserList)
   res.send(UserList);
 });
 
 app.get('/', (req, res) => {
-  
+
   res.send('Hello World, from express');
 });
 app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))

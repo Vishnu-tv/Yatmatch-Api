@@ -63,7 +63,7 @@ const UserList = {
     users.map((u) => {
       return {
         objectId: u.id,
-        username: u.name,
+        name: u.name,
         email: u.email,
         updated: "2016-09-28",
       }

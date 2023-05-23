@@ -3,7 +3,11 @@
         <form action="/addCon">
          Name <input name="name" value="$_NAME">
          Email <input name="email" value="$_EMAIL">
-         <input type="Submit">
-        </form>
-    </body>
+         <button type="button" onclick="close">Submit</button>
+         <script>
+         function close()
+         {
+            window.parent.postMessage(JSON.stringify({"action": "DONE"}), "*");
+         }
+         </script>
 </html>

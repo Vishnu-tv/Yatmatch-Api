@@ -10,7 +10,7 @@
 {
     "yachtID" : "0002",
     "yachtName" : "yacht2",
-    "listingStatus" : "Not For Sale",
+    "listingStatus" : "For Sale",
     "askingPrice" : "1267",
     "description" : "24.m,Admiral Yachts,67,2016",
     "location" : "India",

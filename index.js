@@ -8,7 +8,7 @@ const path = require('path');
 app.use(express.json());
 const fs = require('fs');
 app.use(bodyParser.json());
-const { createProfileAction, subscribeAction, addConatctAction, addYachtAction, listUser, fetchCardData } = require('./actions.js')
+const { createProfileAction, subscribeAction, addConatctAction, addConatctActionConfirm, listUser, fetchCardData } = require('./actions.js')
 var contactEmail = '';
 var contactName = '';
 var close = false;
@@ -51,7 +51,7 @@ app.get('/dataFetchUrl',
           const exists = JSON.parse(clients).some(el => el.email === userMail);
   
           if (!exists) {
-            res.send(addConatctAction)
+            res.send(addConatctActionConfirm)
           }
           else {
             res.send(fullList);
@@ -97,6 +97,9 @@ app.get('/addYachtForm', (req, res) => {
 
 });
 
+
+
+
 app.get('/addCon', (req, res) => {
   const Newdata = (
     {
@@ -117,7 +120,26 @@ app.get('/addCon', (req, res) => {
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
 });
 
-
+app.get('/addContacthook', (req, res) => {
+  const Newdata = (
+    {
+      id: 3,
+      name: req.query.name,
+      email: req.query.email,
+      subscribed: "no"
+    }
+  )
+  
+  fs.readFile('./clients.json', function (err, data) {
+    var json = JSON.parse(data);
+    json.push(Newdata);
+    fs.writeFile("./clients.json", JSON.stringify(json), function (err) {
+      if (err) throw err;
+    });
+  })
+  res.send({message:"Contact Added successfully"});
+  
+});
 app.get('/addYacht', (req, res) => {
   const Newdata = (
     {

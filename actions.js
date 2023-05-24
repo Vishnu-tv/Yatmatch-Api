@@ -37,6 +37,21 @@ const addConatctAction = {
         label: "Add Contact"
     }
 }
+
+
+const addConatctActionConfirm = {
+    primaryAction: 
+        {
+            type: "CONFIRMATION_ACTION_HOOK",
+            confirmationMessage: "Are you sure you want to Add this Contact?",
+            confirmButtonText: "Yes",
+            cancelButtonText: "No",
+            httpMethod: "POST",
+            uri: "https://yatmatch-api.up.railway.app/addContacthook",
+            label: "Add Contact"
+          }
+    
+}
 const listUser = (data) => {
     return {
         results:
@@ -125,4 +140,4 @@ const fetchCardData = (data) => {
 
 
 
-module.exports = { createProfileAction, subscribeAction, addYachtAction, addConatctAction, listUser, fetchCardData }
+module.exports = { createProfileAction, subscribeAction, addYachtAction, addConatctAction,addConatctActionConfirm, listUser, fetchCardData }

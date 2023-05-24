@@ -91,7 +91,7 @@ const fetchCardData = (data) => {
               type: "IFRAME",
               width: 890,
               height: 748,
-              uri: "https://example.com/edit-iframe-contents",
+              uri: "https://fe-yatmatch.demoserver.work/people-profile/f30cd1f0-ba6c-486d-89c0-68c37b0c9c1f/matches",
               label: "View Matches",
               
             },
@@ -99,7 +99,7 @@ const fetchCardData = (data) => {
               type: "IFRAME",
               width: 890,
               height: 748,
-              uri: "https://example.com/reassign-iframe-contents",
+              uri: "https://fe-yatmatch.demoserver.work/people-profile/f30cd1f0-ba6c-486d-89c0-68c37b0c9c1f/criteria",
               label: "Edit",
               
             }]

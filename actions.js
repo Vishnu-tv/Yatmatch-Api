@@ -108,6 +108,7 @@ const fetchCardData = (data) => {
     return {
         results:resarray,
         totalCount : 2,
+        itemLabel : "yachts",
         primaryAction: {
             type: "IFRAME",
             width: 890,

@@ -18,16 +18,25 @@ const subscribeAction = {
     }
 }
 
-const addContactAction = {
+const addYachtAction = {
     primaryAction: {
         type: "IFRAME",
         width: 890,
         height: 748,
-        uri: "https://yatmatch-api.up.railway.app/addContact",
+        uri: "https://yatmatch-api.up.railway.app/addYachtForm",
         label: "Add Yacht"
     }
 }
 
+const addConatctAction = {
+    primaryAction: {
+        type: "IFRAME",
+        width: 890,
+        height: 748,
+        uri: "https://yatmatch-api.up.railway.app/addContactForm",
+        label: "Add Contact"
+    }
+}
 const listUser = (data) => {
     return {
         results:
@@ -56,15 +65,19 @@ const listUser = (data) => {
 
 
 const fetchCardData = (data) => {
-   const resarray =  JSON.parse(data).map((u) => {
+    const resarray = JSON.parse(data).map((yacht) => {
         return {
-            objectId: u.id,
-            title: u.name,
+            objectId: yacht.yachtID,
+            title: yacht.name,
             link: "http://example.com/1",
             created: "2016-09-15",
-            name: u.name,
-            email: u.email,
             updated: "2016-09-28",
+            yachtName: yacht.yachtName,
+            listingStatus: yacht.listingStatus,
+            askingPrice: yacht.askingPrice,
+            description: yacht.description,
+            location: yacht.location,
+            timeline: yacht.timeline
         }
     })
     criteria = {
@@ -88,28 +101,28 @@ const fetchCardData = (data) => {
         updated: "2016-09-28",
         actions: [
             {
-              type: "IFRAME",
-              width: 890,
-              height: 748,
-              uri: "https://fe-yatmatch.demoserver.work/people-profile/f30cd1f0-ba6c-486d-89c0-68c37b0c9c1f/matches",
-              label: "View Matches",
-              
+                type: "IFRAME",
+                width: 890,
+                height: 748,
+                uri: "https://fe-yatmatch.demoserver.work/people-profile/f30cd1f0-ba6c-486d-89c0-68c37b0c9c1f/matches",
+                label: "View Matches",
+
             },
             {
-              type: "IFRAME",
-              width: 890,
-              height: 748,
-              uri: "https://fe-yatmatch.demoserver.work/people-profile/f30cd1f0-ba6c-486d-89c0-68c37b0c9c1f/criteria",
-              label: "Edit",
-              
+                type: "IFRAME",
+                width: 890,
+                height: 748,
+                uri: "https://fe-yatmatch.demoserver.work/people-profile/f30cd1f0-ba6c-486d-89c0-68c37b0c9c1f/criteria",
+                label: "Change Criterias",
+
             }]
     }
     resarray.unshift(criteria)
     return {
-        results:resarray,
-        totalCount : 7,
-        itemLabel : "yachts",
-        allItemsLink : "https://fe-yatmatch.demoserver.work/yachts",
+        results: resarray,
+        totalCount: resarray.length,
+        itemLabel: "Yachts",
+        allItemsLink: "https://fe-yatmatch.demoserver.work/yachts",
         primaryAction: {
             type: "IFRAME",
             width: 890,
@@ -144,4 +157,4 @@ const fetchCardDataAlt = (data) => {
         }
     }
 }
-module.exports = { createProfileAction, subscribeAction, addContactAction, listUser ,fetchCardData}
+module.exports = { createProfileAction, subscribeAction, addYachtAction, addConatctAction, listUser, fetchCardData }

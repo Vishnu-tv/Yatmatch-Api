@@ -3,11 +3,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 var users = require('./users');
+var clients = require('./clients');
 const path = require('path');
 app.use(express.json());
 const fs = require('fs');
 app.use(bodyParser.json());
-const { createProfileAction, subscribeAction, addContactAction, listUser, fetchCardData } = require('./actions.js')
+const { createProfileAction, subscribeAction,addConatctAction, addYachtAction, listUser, fetchCardData } = require('./actions.js')
 var contactEmail = '';
 var contactName = '';
 var close = false;
@@ -21,8 +22,8 @@ app.get('/dataFetchUrl',
     contactEmail = userMail;
     contactName = name;
     var result;
-    const exists = users.some(el => el.email === email);
-    result = fs.readFileSync('./users.json', 'utf8', function (err, data) {
+    const profile = users.some(el => el.email === email);
+    result = fs.readFileSync('./yachts.json', 'utf8', function (err, data) {
       if (err) throw err;
       return data
     });
@@ -30,13 +31,21 @@ app.get('/dataFetchUrl',
 
     fullList = fetchCardData(result);
 
-    if (!exists) {
+    if (!profile) {
       res.json(createProfileAction);
     }
     else {
       const sub = users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
       if (sub == 'yes') {
-        res.send(fullList);
+        const exists = clients.some(el => el.email === userMail);
+        if(!exists)
+        {
+          res.send(addConatctAction)
+        }
+        else{
+          res.send(fullList);
+        }
+        
       }
       else {
         res.json(subscribeAction);
@@ -46,8 +55,8 @@ app.get('/dataFetchUrl',
 
   });
 
-app.get('/addContact', (req, res) => {
-  const filePath = path.resolve(__dirname, './public', 'phone.html')
+app.get('/addContactForm', (req, res) => {
+  const filePath = path.resolve(__dirname, './public', 'contact.html')
   fs.readFile(filePath, 'utf8', function (err, data) {
     if (err) {
       return console.log(err);
@@ -61,7 +70,16 @@ app.get('/addContact', (req, res) => {
 
 });
 
+app.get('/addYachtForm', (req, res) => {
+  const filePath = path.resolve(__dirname, './public', 'yacht.html')
+  fs.readFile(filePath, 'utf8', function (err, data) {
+    if (err) {
+      return console.log(err);
+    }
+    res.send(data);
+  });
 
+});
 
 app.get('/addCon', (req, res) => {
   const Newdata = (
@@ -72,16 +90,42 @@ app.get('/addCon', (req, res) => {
       subscribed: "no"
     }
   )
-  res.send('Added');
-  fs.readFile('./users.json', function (err, data) {
+  res.send('contact Added Successfully');
+  fs.readFile('./clients.json', function (err, data) {
     var json = JSON.parse(data);
     json.push(Newdata);
-    fs.writeFile("./users.json", JSON.stringify(json), function (err) {
+    fs.writeFile("./clients.json", JSON.stringify(json), function (err) {
       if (err) throw err;
     });
   })
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
 });
+
+
+app.get('/addYacht', (req, res) => {
+  const Newdata = (
+    {
+      yachtID : "0001",
+      yachtName :req.query.yacht_name ,
+      listingStatus : req.query.listing_Status,
+      askingPrice : req.query.budget,
+      description : req.query.description,
+      location : req.query.location,
+      timeline : req.query.timeline
+    }
+  )
+  res.send('Yacht Added Successfully');
+  fs.readFile('./yachts.json', function (err, data) {
+    var json = JSON.parse(data);
+    json.push(Newdata);
+    fs.writeFile("./yachts.json", JSON.stringify(json), function (err) {
+      if (err) throw err;
+    });
+  })
+  // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
+});
+
+
 
 app.get('/list', (req, res) => {
   fs.readFile('./users.json', 'utf8', function (err, data) {

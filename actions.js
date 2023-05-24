@@ -80,6 +80,7 @@ const fetchCardData = (data) => {
             timeline: yacht.timeline
         }
     })
+    const count = resarray.length
     criteria = {
         objectId: 123,
         title: "Search Criteria",
@@ -120,7 +121,7 @@ const fetchCardData = (data) => {
     resarray.unshift(criteria)
     return {
         results: resarray,
-        totalCount: resarray.length,
+        totalCount: count,
         itemLabel: "Yachts",
         allItemsLink: "https://fe-yatmatch.demoserver.work/yachts",
         primaryAction: {

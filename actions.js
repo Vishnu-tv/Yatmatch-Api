@@ -109,6 +109,7 @@ const fetchCardData = (data) => {
         results:resarray,
         totalCount : 2,
         itemLabel : "yachts",
+        allItemsLink : "https://yatmatch-api.up.railway.app/addContact",
         primaryAction: {
             type: "IFRAME",
             width: 890,

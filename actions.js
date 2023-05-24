@@ -19,13 +19,13 @@ const subscribeAction = {
 }
 
 const addYachtAction = {
-    primaryAction: {
+    
         type: "IFRAME",
         width: 890,
         height: 748,
         uri: "https://yatmatch-api.up.railway.app/addYachtForm",
         label: "Add Yacht"
-    }
+    
 }
 
 const addConatctAction = {
@@ -51,13 +51,7 @@ const listUser = (data) => {
                     updated: "2016-09-28",
                 }
             }),
-        primaryAction: {
-            type: "IFRAME",
-            width: 890,
-            height: 748,
-            uri: "https://yatmatch-api.up.railway.app/addContactForm",
-            label: "Add Yacht"
-        }
+        primaryAction: addYachtAction
     }
 
 }
@@ -124,38 +118,11 @@ const fetchCardData = (data) => {
         totalCount: count,
         itemLabel: "Yachts",
         allItemsLink: "https://fe-yatmatch.demoserver.work/yachts",
-        primaryAction: {
-            type: "IFRAME",
-            width: 890,
-            height: 748,
-            uri: "https://yatmatch-api.up.railway.app/addContactForm",
-            label: "Add Yacht"
-        }
+        primaryAction: addYachtAction
     }
 }
 
 
-const fetchCardDataAlt = (data) => {
-    return {
-        results:
-            JSON.parse(data).map((u) => {
-                return {
-                    objectId: u.id,
-                    title: u.name,
-                    link: "http://example.com/1",
-                    created: "2016-09-15",
-                    name: u.name,
-                    email: u.email,
-                    updated: "2016-09-28",
-                }
-            }),
-        primaryAction: {
-            type: "IFRAME",
-            width: 890,
-            height: 748,
-            uri: "https://yatmatch-api.up.railway.app/addContact",
-            label: "Add Yacht"
-        }
-    }
-}
+
+
 module.exports = { createProfileAction, subscribeAction, addYachtAction, addConatctAction, listUser, fetchCardData }

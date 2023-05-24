@@ -128,7 +128,7 @@ app.get('/addYacht', (req, res) => {
 
 
 app.get('/list', (req, res) => {
-  fs.readFile('./users.json', 'utf8', function (err, data) {
+  fs.readFile('./clients.json', 'utf8', function (err, data) {
     if (err) throw err;
     data = JSON.parse(data);
     const UserList = listUser(data)

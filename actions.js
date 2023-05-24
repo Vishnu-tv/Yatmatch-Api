@@ -68,7 +68,7 @@ const fetchCardData = (data) => {
     const resarray = JSON.parse(data).map((yacht) => {
         return {
             objectId: yacht.yachtID,
-            title: yacht.name,
+            title: yacht.yachtName,
             link: "http://example.com/1",
             created: "2016-09-15",
             updated: "2016-09-28",

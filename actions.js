@@ -69,11 +69,22 @@ const fetchCardData = (data) => {
     })
     criteria = {
         objectId: 123,
-        title: "search Criteria",
+        title: "Search Criteria",
         link: "http://example.com/1",
         created: "2016-09-15",
-        name: "Test Name",
-        email: "test@gmail.com",
+        yacht_type: "Classic,Sport Fisher",
+        builder: "Abacus Marine",
+        model: "105 Classic,115",
+        budget: "0 - 30250000",
+        loa: "10 m-60m",
+        year: "1970-2020",
+        gross_tonnage: "0-1850",
+        engine_power: "100-150",
+        engine_hour: "20-24",
+        cruising_area: "Africa - Benin",
+        cabin: "Guests cabin 2 sleeps 3-5",
+        special_feature: "stabilized,joystick",
+        lifestyle: "Long Range,Ocean Crossing",
         updated: "2016-09-28",
         actions: [
             {

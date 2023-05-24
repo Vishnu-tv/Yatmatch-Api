@@ -7,61 +7,11 @@ const path = require('path');
 app.use(express.json());
 const fs = require('fs');
 app.use(bodyParser.json());
+const { createProfileAction, subscribeAction, addContactAction, listUser, fetchCardData } = require('./actions.js')
 var contactEmail = '';
 var contactName = '';
 var close = false;
 var UserList;
-// const users = [
-//   {
-//     id: 1,
-//     name: "Sandhya",
-//     email: "sandhya@gmail.com",
-//     subscribed: "no"
-//   },
-//   {
-//     id: 2,
-//     name: "Vishnupriya",
-//     email: "tvvishnupriya96@gmail.com",
-//     subscribed: "yes"
-//   }
-// ];
-
-
-const createProfileAction = {
-  primaryAction: {
-    type: "IFRAME",
-    width: 890,
-    height: 748,
-    uri: "https://fe-yatmatch.demoserver.work/register",
-    label: "Create Broker Profile"
-  }
-}
-
-
-
-const subscribeAction = {
-  primaryAction: {
-    type: "IFRAME",
-    width: 890,
-    height: 748,
-    uri: "https://fe-yatmatch.demoserver.work/login",
-    label: "Subscibe a Plan"
-  }
-}
-
-
-
-const addContactAction = {
-  primaryAction: {
-    type: "IFRAME",
-    width: 890,
-    height: 748,
-    uri: "https://yatmatch-api.up.railway.app/addContact",
-    label: "Add Yacht"
-  }
-}
-
-
 
 app.get('/dataFetchUrl',
   (req, res) => {
@@ -78,27 +28,8 @@ app.get('/dataFetchUrl',
     });
 
 
-    fullList = {
-      results:
-        JSON.parse(result).map((u) => {
-          return {
-            objectId: u.id,
-            title: u.name,
-            link: "http://example.com/1",
-            created: "2016-09-15",
-            name: u.name,
-            email: u.email,
-            updated: "2016-09-28",
-          }
-        }),
-      primaryAction: {
-        type: "IFRAME",
-        width: 890,
-        height: 748,
-        uri: "https://yatmatch-api.up.railway.app/addContact",
-        label: "Add Yacht"
-      }
-    }
+    fullList = fetchCardData(result);
+
     if (!exists) {
       res.json(createProfileAction);
     }
@@ -147,7 +78,6 @@ app.get('/addCon', (req, res) => {
     json.push(Newdata);
     fs.writeFile("./users.json", JSON.stringify(json), function (err) {
       if (err) throw err;
-      // console.log('The "data to append" was appended to file!');
     });
   })
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
@@ -157,35 +87,15 @@ app.get('/list', (req, res) => {
   fs.readFile('./users.json', 'utf8', function (err, data) {
     if (err) throw err;
     data = JSON.parse(data);
-    const UserList = {
-
-      results:
-        data.map((u) => {
-          return {
-            objectId: u.id,
-            title: u.name,
-            link: "http://example.com/1",
-            created: "2016-09-15",
-            name: u.name,
-            email: u.email,
-            updated: "2016-09-28",
-          }
-        }),
-      primaryAction: {
-        type: "IFRAME",
-        width: 890,
-        height: 748,
-        uri: "https://yatmatch-api.up.railway.app/addContact",
-        label: "Add Yacht"
-      }
-
-    }
+    const UserList = listUser(data)
     res.send(UserList);
   });
 });
 
+
 app.get('/', (req, res) => {
 
-  res.send('Hello World, from express');
+  res.send('Hello User, from express');
 });
-app.listen(port, () => console.log(`Hello world app listening on port ${port}!`))
+
+app.listen(port, () => console.log(`Hello  listening on port ${port}!`))

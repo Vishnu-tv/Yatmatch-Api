@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
-var users = require('./users');
-var clients = require('./clients');
+var users;
+var clients;
 const path = require('path');
 app.use(express.json());
 const fs = require('fs');
 app.use(bodyParser.json());
-const { createProfileAction, subscribeAction,addConatctAction, addYachtAction, listUser, fetchCardData } = require('./actions.js')
+const { createProfileAction, subscribeAction, addConatctAction, addYachtAction, listUser, fetchCardData } = require('./actions.js')
 var contactEmail = '';
 var contactName = '';
 var close = false;
@@ -21,37 +21,53 @@ app.get('/dataFetchUrl',
     const name = req.query.firstname + ' ' + req.query.lastname;
     contactEmail = userMail;
     contactName = name;
+    var profile = '';
     var result;
-    const profile = users.some(el => el.email === email);
-    result = fs.readFileSync('./yachts.json', 'utf8', function (err, data) {
-      if (err) throw err;
-      return data
-    });
+    fs.readFile('./users.json', 'utf8', function (err, data) {
+      users = JSON.parse(data);
+      profile = users.some(el => el.email === email);
+
+      result = fs.readFileSync('./yachts.json', 'utf8', function (err, data) {
+        if (err) throw err;
+        return data
+      });
+      fullList = fetchCardData(result);
 
 
-    fullList = fetchCardData(result);
-
-    if (!profile) {
-      res.json(createProfileAction);
-    }
-    else {
-      const sub = users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
-      if (sub == 'yes') {
-        const exists = clients.some(el => el.email === userMail);
-        if(!exists)
-        {
-          res.send(addConatctAction)
-        }
-        else{
-          res.send(fullList);
-        }
-        
+      if (!profile) {
+        res.json(createProfileAction);
       }
       else {
-        res.json(subscribeAction);
+  
+
+        const sub = users.filter(el => el.email === email).map(filteredObj => filteredObj.subscribed);
+
+        clients = fs.readFileSync('./clients.json', function (err, data) {
+          if (err) throw err;
+          return data
+        })
+
+        if (sub == 'yes') {
+          const exists = JSON.parse(clients).some(el => el.email === userMail);
+  
+          if (!exists) {
+            res.send(addConatctAction)
+          }
+          else {
+            res.send(fullList);
+          }
+  
+        }
+        else {
+          res.json(subscribeAction);
+        }
+  
       }
 
-    }
+
+
+    })
+
 
   });
 
@@ -105,13 +121,13 @@ app.get('/addCon', (req, res) => {
 app.get('/addYacht', (req, res) => {
   const Newdata = (
     {
-      yachtID : "0001",
-      yachtName :req.query.yacht_name ,
-      listingStatus : req.query.listing_Status,
-      askingPrice : req.query.budget,
-      description : req.query.description,
-      location : req.query.location,
-      timeline : req.query.timeline
+      yachtID: "0001",
+      yachtName: req.query.yacht_name,
+      listingStatus: req.query.listing_Status,
+      askingPrice: req.query.budget,
+      description: req.query.description,
+      location: req.query.location,
+      timeline: req.query.timeline
     }
   )
   res.send('Yacht Added Successfully');

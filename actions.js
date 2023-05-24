@@ -107,9 +107,9 @@ const fetchCardData = (data) => {
     resarray.unshift(criteria)
     return {
         results:resarray,
-        totalCount : 2,
+        totalCount : 7,
         itemLabel : "yachts",
-        allItemsLink : "https://yatmatch-api.up.railway.app/addContact",
+        allItemsLink : "https://fe-yatmatch.demoserver.work/yachts",
         primaryAction: {
             type: "IFRAME",
             width: 890,

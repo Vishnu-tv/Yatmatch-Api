@@ -70,7 +70,7 @@ const fetchCardData = (data) => {
     criteria = {
         objectId: 123,
         title: "Search Criteria",
-        link: "http://example.com/1",
+        link: null,
         created: "2016-09-15",
         yacht_type: "Classic,Sport Fisher",
         builder: "Abacus Marine",
@@ -107,6 +107,7 @@ const fetchCardData = (data) => {
     resarray.unshift(criteria)
     return {
         results:resarray,
+        totalCount : 2,
         primaryAction: {
             type: "IFRAME",
             width: 890,

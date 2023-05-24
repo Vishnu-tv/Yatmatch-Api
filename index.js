@@ -120,7 +120,7 @@ app.get('/addCon', (req, res) => {
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
 });
 
-app.get('/addContacthook', (req, res) => {
+app.post('/addContacthook', (req, res) => {
   console.log('REquest',req)
   const Newdata = (
     {

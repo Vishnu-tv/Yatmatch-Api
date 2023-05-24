@@ -125,8 +125,8 @@ app.post('/addContacthook', (req, res) => {
   const Newdata = (
     {
       id: 3,
-      name: req.query.firstname + req.query.lastname,
-      email: req.query.email,
+      name: req.body.firstname + req.body.lastname,
+      email: req.body.email,
       subscribed: "no"
     }
   )

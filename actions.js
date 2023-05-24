@@ -53,30 +53,49 @@ const listUser = (data) => {
 
 }
 
+
+
 const fetchCardData = (data) => {
-    return {
-        results:[ 
+   const resarray =  JSON.parse(data).map((u) => {
+        return {
+            objectId: u.id,
+            title: u.name,
+            link: "http://example.com/1",
+            created: "2016-09-15",
+            name: u.name,
+            email: u.email,
+            updated: "2016-09-28",
+        }
+    })
+    criteria = {
+        objectId: 123,
+        title: "search Criteria",
+        link: "http://example.com/1",
+        created: "2016-09-15",
+        name: "Test Name",
+        email: "test@gmail.com",
+        updated: "2016-09-28",
+        actions: [
             {
-                objectId: 123,
-                title: "test",
-                link: "http://example.com/1",
-                created: "2016-09-15",
-                name: "Test Name",
-                email: "test@gmail.com",
-                updated: "2016-09-28",
+              type: "IFRAME",
+              width: 890,
+              height: 748,
+              uri: "https://example.com/edit-iframe-contents",
+              label: "View Matches",
+              
             },
-            JSON.parse(data).map((u) => {
-            return {
-                objectId: u.id,
-                title: u.name,
-                link: "http://example.com/1",
-                created: "2016-09-15",
-                name: u.name,
-                email: u.email,
-                updated: "2016-09-28",
-            }
-        })]
-           ,
+            {
+              type: "IFRAME",
+              width: 890,
+              height: 748,
+              uri: "https://example.com/reassign-iframe-contents",
+              label: "Edit",
+              
+            }]
+    }
+    resarray.unshift(criteria)
+    return {
+        results:resarray,
         primaryAction: {
             type: "IFRAME",
             width: 890,

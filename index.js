@@ -125,8 +125,8 @@ app.post('/addContacthook', (req, res) => {
   const Newdata = (
     {
       id: 3,
-      name: "bh@hubspot.com",
-      email: "bh@hubspot.com",
+      name: req.query.name,
+      email: req.query.email,
       subscribed: "no"
     }
   )

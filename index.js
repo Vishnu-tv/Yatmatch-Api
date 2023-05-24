@@ -121,10 +121,11 @@ app.get('/addCon', (req, res) => {
 });
 
 app.get('/addContacthook', (req, res) => {
+  console.log('REquest',req)
   const Newdata = (
     {
       id: 3,
-      name: req.query.name,
+      name: req.query.firstname + req.query.lastname,
       email: req.query.email,
       subscribed: "no"
     }

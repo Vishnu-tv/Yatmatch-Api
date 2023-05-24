@@ -40,7 +40,7 @@ const addConatctAction = {
 
 
 const addConatctActionConfirm = {
-    primaryAction: 
+    primaryAction:  
         {
             type: "CONFIRMATION_ACTION_HOOK",
             confirmationMessage: "Are you sure you want to Add this Contact?",

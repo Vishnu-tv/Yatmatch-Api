@@ -74,9 +74,6 @@ const listUser = (data) => {
  
 }
 
-
-
-
 const fetchCardData = (data) => {
     const resarray = JSON.parse(data).map((yacht) => {
         return {

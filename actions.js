@@ -128,7 +128,7 @@ const fetchCardData = (data) => {
 
             }]
     }
-    resarray.unshift(criteria)
+    // resarray.unshift(criteria)
     return {
         results: resarray,
         totalCount: count,

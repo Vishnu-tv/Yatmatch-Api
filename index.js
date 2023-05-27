@@ -129,6 +129,7 @@ app.post('/addContacthook', (req, res) => {
       email: contactEmail,
       subscribed: "no"
     }
+    
   )
   console.log('Request',req)
   fs.readFile('./clients.json', function (err, data) {

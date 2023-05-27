@@ -130,7 +130,7 @@ app.post('/addContacthook', (req, res) => {
       subscribed: "no"
     }
   )
-  
+  console.log('Request',req)
   fs.readFile('./clients.json', function (err, data) {
     var json = JSON.parse(data);
     json.push(Newdata);

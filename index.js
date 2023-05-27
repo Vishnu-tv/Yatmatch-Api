@@ -131,7 +131,7 @@ app.post('/addContacthook', (req, res) => {
     }
     
   )
-  console.log('Request',req)
+  console.log('Request from post',req)
   fs.readFile('./clients.json', function (err, data) {
     var json = JSON.parse(data);
     json.push(Newdata);

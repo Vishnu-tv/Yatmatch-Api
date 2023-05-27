@@ -138,7 +138,7 @@ app.post('/addContacthook', (req, res) => {
       if (err) throw err;
     });
   })
-  res.json({message:"Contact Added successfully"});
+  res.status(200).send({message:"Contact Added successfully"});
   
 });
 app.get('/addYacht', (req, res) => {

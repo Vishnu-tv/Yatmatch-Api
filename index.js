@@ -8,7 +8,7 @@ const path = require('path');
 app.use(express.json());
 const fs = require('fs');
 app.use(bodyParser.json());
-const { actionTest,createProfileAction, subscribeAction, addConatctAction, addConatctActionConfirm, listUser, fetchCardData } = require('./actions.js')
+const { actionTest,createProfileAction,actionTest_v2, subscribeAction, addConatctAction, addConatctActionConfirm, listUser, fetchCardData } = require('./actions.js')
 var contactEmail = '';
 var contactName = '';
 var close = false;
@@ -51,7 +51,7 @@ app.get('/dataFetchUrl',
           const exists = JSON.parse(clients).some(el => el.email === userMail);
   
           if (!exists) {
-            res.send(addConatctActionConfirm)
+            res.send(actionTest_v2)
           }
           else {
             res.send(fullList);
@@ -122,7 +122,7 @@ app.get('/addCon', (req, res) => {
 
 
 app.post('/addContacthook', (req, res) => {
-  console.log('Request',req)
+  console.log('Request',res)
   
   // console.log('Name',req.firstname+req.lastname)
   // console.log('email',req.email)

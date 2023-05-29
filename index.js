@@ -122,9 +122,10 @@ app.get('/addCon', (req, res) => {
 
 
 app.get('/addContacthook', (req, res) => {
+  console.log('Request',req)
   console.log('UserMail',req.userMail)
-  console.log('Name',req.firstname+req.lastname)
-  console.log('email',req.email)
+  // console.log('Name',req.firstname+req.lastname)
+  // console.log('email',req.email)
  
   // const Newdata = (
   //   {

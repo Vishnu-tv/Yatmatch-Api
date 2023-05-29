@@ -121,7 +121,7 @@ app.get('/addCon', (req, res) => {
 });
 
 app.delete('/addContacthook', (req, res) => {
-  console.log('Request from post',req.url)
+  console.log('Request from post',req)
   // const Newdata = (
   //   {
   //     id: 3,

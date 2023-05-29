@@ -65,7 +65,7 @@ const actionTest ={
                     type: "ACTION_HOOK",
                     httpMethod: "GET",
                     associatedObjectProperties: [ 
-                        "firstname","lastname","email"
+                        "firstname","lastname","email","phone"
                     ],
                     uri: "https://yatmatch-api.up.railway.app/addContacthook",
                     label: "Create Contact"

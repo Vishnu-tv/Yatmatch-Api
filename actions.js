@@ -46,7 +46,7 @@ const addConatctActionConfirm = {
             confirmationMessage: "Are you sure you want to Add this Contact?",
             confirmButtonText: "Yes",
             cancelButtonText: "No",
-            httpMethod: "GET",
+            httpMethod: "POST",
             associatedObjectProperties: [
                 "firstname","lastname","email","phone"
               ],

@@ -63,7 +63,7 @@ const actionTest ={
             actions: [
                 {
                     type: "ACTION_HOOK",
-                    httpMethod: "DELETE",
+                    httpMethod: "POST",
                     associatedObjectProperties: [ 
                         "firstname","lastname","email"
                     ],

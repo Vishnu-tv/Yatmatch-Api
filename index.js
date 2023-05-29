@@ -71,7 +71,7 @@ app.get('/dataFetchUrl',
 
   });
 
-app.delete('/addContactForm', (req, res) => {
+app.post('/addContactForm', (req, res) => {
   const filePath = path.resolve(__dirname, './public', 'contact.html')
   fs.readFile(filePath, 'utf8', function (err, data) {
     if (err) {

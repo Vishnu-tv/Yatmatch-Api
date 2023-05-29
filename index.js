@@ -122,23 +122,23 @@ app.get('/addCon', (req, res) => {
 
 app.post('/addContacthook', (req, res) => {
   console.log('Request from post',req)
-  const Newdata = (
-    {
-      id: 3,
-      name: contactName,
-      email: contactEmail,
-      subscribed: "no"
-    }
+  // const Newdata = (
+  //   {
+  //     id: 3,
+  //     name: contactName,
+  //     email: contactEmail,
+  //     subscribed: "no"
+  //   }
     
-  )
+  // )
 
-  fs.readFile('./clients.json', function (err, data) {
-    var json = JSON.parse(data);
-    json.push(Newdata);
-    fs.writeFile("./clients.json", JSON.stringify(json), function (err) {
-      if (err) throw err;
-    });
-  })
+  // fs.readFile('./clients.json', function (err, data) {
+  //   var json = JSON.parse(data);
+  //   json.push(Newdata);
+  //   fs.writeFile("./clients.json", JSON.stringify(json), function (err) {
+  //     if (err) throw err;
+  //   });
+  // })
   res.status(200).send({message:"Contact Added successfully"});
   
 });

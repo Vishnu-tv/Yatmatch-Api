@@ -46,9 +46,9 @@ const addConatctActionConfirm = {
             confirmationMessage: "Are you sure you want to Add this Contact?",
             confirmButtonText: "Yes",
             cancelButtonText: "No",
-            httpMethod: "POST",
+            httpMethod: "GET",
             associatedObjectProperties: [
-                "firstname","lastname","email"
+                "firstname","lastname","email","phone"
               ],
             uri: "https://yatmatch-api.up.railway.app/addContacthook",
             label: "Add Contact"

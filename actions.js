@@ -67,7 +67,7 @@ const actionTest ={
                     associatedObjectProperties: [ 
                         "firstname","lastname","email"
                     ],
-                    uri: "https://yatmatch-api.up.railway.app/addContacthook/12",
+                    uri: "https://yatmatch-api.up.railway.app/addContacthook",
                     label: "Create Contact"
                 }
             ]

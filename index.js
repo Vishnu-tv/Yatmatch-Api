@@ -165,8 +165,6 @@ app.get('/addYacht', (req, res) => {
   // window.parent.postMessage(JSON.stringify({"action": "DONE","message": "Congrats"}), "*");
 });
 
-
-
 app.get('/list', (req, res) => {
   fs.readFile('./clients.json', 'utf8', function (err, data) {
     if (err) throw err;

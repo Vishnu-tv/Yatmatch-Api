@@ -55,6 +55,27 @@ const addConatctActionConfirm = {
           }
     
 }
+const actionTest ={
+    results: [
+        {
+            objectId: 246,
+            title: "Create a Contact in Yatmatch",
+            actions: [
+                {
+                    type: "ACTION_HOOK",
+                    httpMethod: "POST",
+                    associatedObjectProperties: [ 
+                        "firstname","lastname","email"
+                    ],
+                    uri: "https://yatmatch-api.up.railway.app/addContacthook",
+                    label: "Create Contact"
+                }
+            ]
+        }
+    ]
+}
+
+
 const listUser = (data) => {
     return {
         results:
@@ -141,4 +162,4 @@ const fetchCardData = (data) => {
 
 
 
-module.exports = { createProfileAction, subscribeAction, addYachtAction, addConatctAction,addConatctActionConfirm, listUser, fetchCardData }
+module.exports = { actionTest,createProfileAction, subscribeAction, addYachtAction, addConatctAction,addConatctActionConfirm, listUser, fetchCardData }

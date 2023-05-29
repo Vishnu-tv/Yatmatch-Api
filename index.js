@@ -121,7 +121,7 @@ app.get('/addCon', (req, res) => {
 });
 
 
-app.post('/addContacthook', (req, res) => {
+app.put('/addContacthook', (req, res) => {
   console.log('Request',res)
   
   // console.log('Name',req.firstname+req.lastname)

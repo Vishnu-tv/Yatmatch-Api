@@ -85,10 +85,10 @@ const actionTest_v2 =
             title: "Add Contact to Yatmatch",
             tokens: [
               {
-                "name": "created",
-                "label": "test_label",
-                "dataType": "DATE",
-                "value": "2016-08-04"
+                name: "created",
+                label: "test_label",
+                dataType: "DATE",
+                value: "2016-08-04"
               }
             ],
             actions: [

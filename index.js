@@ -51,7 +51,7 @@ app.get('/dataFetchUrl',
           const exists = JSON.parse(clients).some(el => el.email === userMail);
   
           if (!exists) {
-            res.send(actionTest)
+            res.send(addConatctActionConfirm)
           }
           else {
             res.send(fullList);
@@ -121,7 +121,7 @@ app.get('/addCon', (req, res) => {
 });
 
 
-app.post('/addContacthook', (req, res) => {
+app.get('/addContacthook', (req, res) => {
   console.log('Request',req)
 
   // console.log('Name',req.firstname+req.lastname)

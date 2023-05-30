@@ -19,13 +19,13 @@ const subscribeAction = {
 }
 
 const addYachtAction = {
-    
-        type: "IFRAME",
-        width: 890,
-        height: 748,
-        uri: "https://yatmatch-api.up.railway.app/addYachtForm",
-        label: "Add Yacht"
-    
+
+    type: "IFRAME",
+    width: 890,
+    height: 748,
+    uri: "https://yatmatch-api.up.railway.app/addYachtForm",
+    label: "Add Yacht"
+
 }
 
 const addConatctAction = {
@@ -40,22 +40,22 @@ const addConatctAction = {
 
 
 const addConatctActionConfirm = {
-    primaryAction:  
-        {
-            type: "CONFIRMATION_ACTION_HOOK",
-            confirmationMessage: "Are you sure you want to Add this Contact?",
-            confirmButtonText: "Yes",
-            cancelButtonText: "No",
-            httpMethod: "POST",
-            associatedObjectProperties: [
-                "firstname","lastname","email","phone"
-              ],
-            uri: "https://yatmatch-api.up.railway.app/addContacthook",
-            label: "Add Contact"
-          }
-    
+    primaryAction:
+    {
+        type: "CONFIRMATION_ACTION_HOOK",
+        confirmationMessage: "Are you sure you want to Add this Contact?",
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        httpMethod: "POST",
+        associatedObjectProperties: [
+            "firstname", "lastname", "email", "phone"
+        ],
+        uri: "https://yatmatch-api.up.railway.app/addContacthook",
+        label: "Add Contact"
+    }
+
 }
-const actionTest ={
+const actionTest = {
     results: [
         {
             objectId: 246,
@@ -64,8 +64,8 @@ const actionTest ={
                 {
                     type: "ACTION_HOOK",
                     httpMethod: "POST",
-                    associatedObjectProperties: [ 
-                        {"firstname":"firstname"}
+                    associatedObjectProperties: [
+                        { "firstname": "firstname" }
                     ],
                     uri: "https://yatmatch-api.up.railway.app/addContacthook/",
                     label: "Create Contact"
@@ -82,38 +82,35 @@ const actionTest_v2 =
     allItemsLinkUrl: "https://example.com/all-items-link-url",
     totalCount: 1,
     sections: [
-      {
-        id: "123",
-        title: "Create a Contact in yatmatch",
-        linkUrl: "http://example.com/1",
-        tokens: [
-          {
-            "name": "created",
-            "label": "test_label",
-            "dataType": "DATE",
-            "value": "2016-08-04"
-          }
-        ],
-        actions: [
-          
-          {
-            type: "ACTION_HOOK",
-            confirmation: {
-              prompt: "action-confirmation-body-prompt",
-              confirmButtonLabel: "Continue",
-              cancelButtonLabel: "Cancel"
-            },
-            httpMethod: "POST",
-            url: "https://yatmatch-api.up.railway.app/addContacthook/",
-            label: "Add Contact",
-            propertyNamesIncluded: [
-                "firstname","lastname","email","phone"
+        {
+            id: "123",
+            title: "Create a Contact in yatmatch",
+            linkUrl: "http://example.com/1",
+            tokens: [
+                {
+                    "name": "created",
+                    "label": "test_label",
+                    "dataType": "DATE",
+                    "value": "2016-08-04"
+                }
+            ],
+            actions: [
+
+                {
+                    type: "ACTION_HOOK",
+                    confirmation: null,
+                    httpMethod: "POST",
+                    url: "https://yatmatch-api.up.railway.app/addContacthook/",
+                    label: "Add Contact",
+                    propertyNamesIncluded: [
+                        "firstname", "lastname", "email", "phone"
+                    ],
+                    type: "ACTION_HOOK"
+                },
             ]
-          },
-        ]
-      }
+        }
     ]
-  }
+}
 
 
 const listUser = (data) => {
@@ -132,7 +129,7 @@ const listUser = (data) => {
             }),
         primaryAction: addYachtAction
     }
- 
+
 }
 
 const fetchCardData = (data) => {
@@ -202,4 +199,4 @@ const fetchCardData = (data) => {
 
 
 
-module.exports = { actionTest,actionTest_v2,createProfileAction, subscribeAction, addYachtAction, addConatctAction,addConatctActionConfirm, listUser, fetchCardData }
+module.exports = { actionTest, actionTest_v2, createProfileAction, subscribeAction, addYachtAction, addConatctAction, addConatctActionConfirm, listUser, fetchCardData }

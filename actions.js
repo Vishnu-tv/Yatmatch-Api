@@ -104,7 +104,7 @@ const actionTest_v2 =
               cancelButtonLabel: "Cancel"
             },
             httpMethod: "POST",
-            url: "https://yatmatch-api.up.railway.app/addContacthook",
+            url: "https://yatmatch-api.up.railway.app/addContacthook/",
             label: "Add Contact",
             propertyNamesIncluded: [
                 "firstname","lastname","email","phone"

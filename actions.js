@@ -21,8 +21,8 @@ const subscribeAction = {
 const addYachtAction = {
     
         type: "IFRAME",
-        width: 500,
-        height: 748, 
+        width: 450,
+        height: 600, 
         uri: "http://localhost:9500/addyacht",
         label: "Add Yacht"
     

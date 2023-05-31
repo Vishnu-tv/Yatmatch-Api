@@ -21,10 +21,13 @@ const subscribeAction = {
 const addYachtAction = {
     
         type: "IFRAME",
-        width: 550,
+        width: 450,
         height: 500, 
         uri: "http://localhost:9500/addyacht",
-        label: "Add Yacht"
+        label: "Add Yacht",
+        associatedObjectProperties: [
+            "firstname","lastname","email","phone"
+          ]
     
 }
 // https://yatmatch-api.up.railway.app/addYachtForm
@@ -35,7 +38,7 @@ const addConatctAction = {
         width: 890,
         height: 748,
         uri: "https://yatmatch-api.up.railway.app/addContactForm",
-        label: "Add Contact"
+        label: "Add Contact",
     }
 }
 

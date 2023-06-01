@@ -68,13 +68,7 @@ const actionTest ={
         {
             objectId: 246,
             title: "Create a Contact in Yatmatch",
-            primaryAction: {
-                type: "IFRAME",
-                width: 890,
-                height: 748,
-                uri: "https://yatmatch-api.up.railway.app/addContactForm",
-                label: "Add Contact",
-            }
+            
             // actions: [
             //     {
             //         type: "ACTION_HOOK",
@@ -86,8 +80,16 @@ const actionTest ={
             //         label: "Create Contact"
             //     }
             // ]
-        }
-    ]
+        },
+        
+    ],
+    primaryAction : {
+        type: "IFRAME",
+        width: 890,
+        height: 748,
+        uri: "https://yatmatch-api.up.railway.app/addContactForm",
+        label: "Add Contact",
+    }
 }
 
 

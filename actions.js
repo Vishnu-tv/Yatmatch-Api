@@ -26,7 +26,7 @@ const addYachtAction = (mail)=>{
         uri: "http://localhost:9500/addyacht?userEmail="+mail,
         label: "Add Yacht",
         associatedObjectProperties: [
-            "firstname","lastname","email","phone"
+            "firstname","lastname","email","phone","userEmail"
           ]
     }
         

@@ -26,12 +26,13 @@ const addYachtAction = (mail)=>{
         uri: "http://localhost:9500/addyacht",
         label: "Add Yacht",
         associatedObjectProperties: [
-            "firstname","lastname","email","phone"
+            "firstname","hs_owner_id"
           ]
     }
         
     
 }
+// "lastname","email","phone",
 // uri: "http://localhost:9500/addyacht?userEmail="+mail,
 // https://yatmatch-api.up.railway.app/addYachtForm
 

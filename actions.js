@@ -26,7 +26,7 @@ const addYachtAction = (mail)=>{
         uri: "http://localhost:9500/addyacht",
         label: "Add Yacht",
         associatedObjectProperties: [
-            "firstname","hs_owner_id"
+            "firstname","hubspot_owner_id"
           ]
     }
         

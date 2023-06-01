@@ -18,16 +18,18 @@ const subscribeAction = {
     }
 }
 
-const addYachtAction = {
-    
+const addYachtAction = (mail)=>{
+    return {
         type: "IFRAME",
         width: 550,
         height: 500, 
-        uri: "http://localhost:9500/addyacht",
+        uri: "http://localhost:9500/addyacht?userEmail="+mail,
         label: "Add Yacht",
         associatedObjectProperties: [
             "firstname","lastname","email","phone"
           ]
+    }
+        
     
 }
 // https://yatmatch-api.up.railway.app/addYachtForm
@@ -81,7 +83,7 @@ const actionTest ={
 
 
 
-const fetchCardData = (data) => {
+const fetchCardData = (data,email) => {
     const resarray = JSON.parse(data).map((yacht) => {
         return {
             objectId: yacht.yachtID,
@@ -141,7 +143,7 @@ const fetchCardData = (data) => {
         totalCount: count,
         itemLabel: "Yachts",
         allItemsLink: "https://fe-yatmatch.demoserver.work/yachts",
-        primaryAction: addYachtAction
+        primaryAction: addYachtAction(email)
     }
 }
 

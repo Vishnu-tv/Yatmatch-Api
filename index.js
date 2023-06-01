@@ -31,7 +31,7 @@ app.get('/dataFetchUrl',
         if (err) throw err;
         return data
       });
-      fullList = fetchCardData(result);
+      fullList = fetchCardData(result,email);
 
 
       if (!profile) {

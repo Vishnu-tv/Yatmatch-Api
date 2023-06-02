@@ -121,7 +121,7 @@ app.get('/addCon', (req, res) => {
 });
 
 
-app.get('/addContacthook', (req, res) => {
+app.post('/addContacthook', (req, res) => {
   console.log('Request',req);
   res.status(200).send({message:"Contact Added successfully"});
   

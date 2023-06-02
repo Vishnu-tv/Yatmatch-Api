@@ -122,31 +122,12 @@ app.get('/addCon', (req, res) => {
 
 
 app.get('/addContacthook', (req, res) => {
-  console.log('Request',req)
-
-  // console.log('Name',req.firstname+req.lastname)
-  // console.log('email',req.email)
- 
-  // const Newdata = (
-  //   {
-  //     id: 3,
-  //     name: contactName,
-  //     email: contactEmail,
-  //     subscribed: "no"
-  //   }
-    
-  // )
-
-  // fs.readFile('./clients.json', function (err, data) {
-  //   var json = JSON.parse(data);
-  //   json.push(Newdata);
-  //   fs.writeFile("./clients.json", JSON.stringify(json), function (err) {
-  //     if (err) throw err;
-  //   });
-  // })
+  console.log('Request',req);
   res.status(200).send({message:"Contact Added successfully"});
   
 });
+
+
 app.get('/addYacht', (req, res) => {
   const Newdata = (
     {

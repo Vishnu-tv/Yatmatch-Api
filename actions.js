@@ -23,11 +23,9 @@ const addYachtAction = (mail)=>{
         type: "IFRAME",
         width: 550,
         height: 500, 
-        uri: "http://localhost:9500/addyacht",
+        uri: "http://localhost:9500/addyacht?userEmail="+mail,
         label: "Add Yacht",
-        associatedObjectProperties: [
-            "firstname","lastname","email"
-          ]
+        associatedObjectProperties: []
     }
         
     

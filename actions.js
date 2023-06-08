@@ -218,4 +218,23 @@ const listUser = (data) => {
     }
  
 }
-module.exports = { actionTest,actionTest_v2,createProfileAction, subscribeAction, addYachtAction, addConatctAction,addConatctActionConfirm, listUser, fetchCardData }
+
+
+const testAction = {
+    results: [
+        {
+            objectId: 246,
+            title: "xxxx",
+            actions: [
+                {
+                    type: "ACTION_HOOK",
+                    httpMethod: "POST",
+                    associatedObjectProperties: [ ],
+                    uri: "https://yatmatch-api.up.railway.app/addContactForm",
+                    label: "Test"
+                }
+            ]
+        }
+    ],
+}
+module.exports = {testAction, actionTest,actionTest_v2,createProfileAction, subscribeAction, addYachtAction, addConatctAction,addConatctActionConfirm, listUser, fetchCardData }

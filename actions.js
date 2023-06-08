@@ -183,7 +183,7 @@ const actionTest_v2 =
           {
             type: "ACTION_HOOK",
             confirmation: {
-              prompt: "action-confirmation-body-prompt",
+              prompt: "Do you want to add contact",
               confirmButtonLabel: "Continue",
               cancelButtonLabel: "Cancel"
             },

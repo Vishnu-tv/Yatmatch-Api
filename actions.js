@@ -187,7 +187,7 @@ const actionTest_v2 =
               confirmButtonLabel: "Continue",
               cancelButtonLabel: "Cancel"
             },
-            httpMethod: "POST",
+            httpMethod: "GET",
             propertyNamesIncluded: [
                 "firstname","lastname","email","phone"
             ],

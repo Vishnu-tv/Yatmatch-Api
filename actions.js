@@ -52,7 +52,7 @@ const addConatctActionConfirm = {
             confirmationMessage: "Are you sure you want to Add this Contact?",
             confirmButtonText: "Yes",
             cancelButtonText: "No",
-            httpMethod: "POST",
+            httpMethod: "GET",
             associatedObjectProperties: [
                 "firstname","lastname","email","phone"
               ],

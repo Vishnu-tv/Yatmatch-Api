@@ -51,7 +51,7 @@ app.get('/dataFetchUrl',
           const exists = JSON.parse(clients).some(el => el.email === userMail);
   
           if (!exists) {
-            res.send(testAction)
+            res.send(addConatctActionConfirm)
           }
           else {
             res.send(fullList);
